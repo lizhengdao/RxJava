@@ -1,0 +1,72 @@
+2019-07-23
+
+https://blog.csdn.net/woshiyexinjie/article/details/82999595
+https://dzone.com/articles/what-are-reactive-streams-in-java
+
+http://reactivex.io/documentation/observable.html
+
+
+The Reactive Streams API
+我们来看看Reactive Streams API for Java。Reactive Streams API仅包含四个接口。
+
+Publisher
+发布者是可能无限数量的有序元素的提供者，根据从其订阅者收到的需求发布它们。
+
+public interface Publisher<T> {
+    public void subscribe(Subscriber<? super T> s);
+}
+
+Subscriber
+在将订阅者实例传递给Publisher.subscribe（订阅者）之后，将接收对Subscriber.onSubscribe（订阅）的调用。
+public interface Subscriber<T> {
+    public void onSubscribe(Subscription s);
+    public void onNext(T t);
+    public void onError(Throwable t);
+    public void onComplete();
+}
+
+Subscription
+订阅表示订阅发布者的订阅者的一对一生命周期。
+
+public interface Subscription {
+    public void request(long n);
+    public void cancel();
+}
+
+Processor
+Processor代表一个处理阶段 - 既是订阅者又是发布者，并遵守两者的合同。
+
+public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
+}
+---------------------
+作者：woshiyexinjie
+来源：CSDN
+原文：https://blog.csdn.net/woshiyexinjie/article/details/82999595
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

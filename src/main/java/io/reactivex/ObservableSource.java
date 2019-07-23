@@ -17,6 +17,9 @@ import io.reactivex.annotations.*;
 /**
  * Represents a basic, non-backpressured {@link Observable} source base interface,
  * consumable via an {@link Observer}.
+ *  可订阅的源
+ *  这个相当于是Publisher
+       发布者是可能无限数量的有序元素的提供者，根据从其订阅者收到的需求发布它们。
  *
  * @param <T> the element type
  * @since 2.0
@@ -27,6 +30,8 @@ public interface ObservableSource<T> {
      * Subscribes the given Observer to this ObservableSource instance.
      * @param observer the Observer, not null
      * @throws NullPointerException if {@code observer} is null
+     *
+     * 把给定的订阅者Observer订阅此发布者ObservableSource
      */
     void subscribe(@NonNull Observer<? super T> observer);
 }
